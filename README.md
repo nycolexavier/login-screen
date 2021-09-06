@@ -27,7 +27,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [HTML](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
 - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [JavaScript](https://www.javascript.com/)
 
 ### Licença
 
