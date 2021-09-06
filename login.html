@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tela de login</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="shortcut icon" href="assets/favicon.svg" type="image/x-icon" />
+  </head>
+  <body>
+    <form>
+      <h1>Login</h1>
+      <input id="name" type="text" placeholder="Digite seu nome" />
+      <br /><br />
+      <input id="password" type="password" placeholder="Digite sua senha" />
+      <br /><br />
+      <input
+        type="submit"
+        name="button"
+        class="submit"
+        value="Enviar"
+        onclick="Execute.executeLog()"
+      />
+    </form>
+    <script>
+      const Sign = {
+        getValues() {
+          let name = document.getElementById("name").value;
+          let email = document.getElementById("email").value;
+          let password = document.getElementById("password").value;
+
+          Sign.store(name, email, password);
+        },
+
+        store(name, email, password) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ name, email, password })
+          );
+        },
+      };
+
+      const Log = {
+        getFromStorage() {
+          return JSON.parse(localStorage.getItem("user")) || [];
+        },
+
+        validate({ data }) {
+          let name = document.getElementById("name").value;
+          let password = document.getElementById("password").value;
+          let counter = 0;
+
+          if (data.name == name) {
+            counter++;
+          }
+
+          if (data.password == password) {
+            counter++;
+          }
+
+          if (counter == 2) {
+            alert("You logged in");
+          }
+          console.log(counter);
+        },
+      };
+
+      const Execute = {
+        executeSign() {
+          Sign.getValues();
+        },
+
+        executeLog() {
+          let object = Log.getFromStorage();
+          Log.validate({ data: object });
+        },
+      };
+    </script>
+  </body>
+</html>
